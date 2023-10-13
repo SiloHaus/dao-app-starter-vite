@@ -25,8 +25,7 @@ export const LayoutContainer = () => {
     <DHLayout
       pathname={location.pathname}
       navLinks={[
-        { label: "Home", href: `/` },
-        { label: "DAO Overview", href: `${routePath}/dao` },
+        { label: "Overview", href: `${routePath}/dao` },
         { label: "Safes", href: `${routePath}/safes` },
         { label: "Proposals", href: `${routePath}/proposals` },
         { label: "Members", href: `${routePath}/members` },
