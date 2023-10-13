@@ -13,15 +13,15 @@ const LinkBox = styled.div`
 export const Home = () => {
   return (
     <SingleColumnLayout>
-      <H2>DAOhaus is your haus</H2>
+      <H2>We are Silo Squad</H2>
       <HausAnimated />
       <ParMd style={{ marginBottom: "2.4rem" }}>
-        Get started by editing src/pages/Home.tsx
+        We're building NFT DAO tooling so you can squad up with your community and get shit done.
       </ParMd>
       <LinkBox>
-        <Link href="https://github.com/HausDAO/monorepo">Github</Link>
-        <Link href="https://admin.daohaus.fun/">Admin</Link>
-        <StyledRouterLink to="/formtest">Example Form</StyledRouterLink>
+        <Link href="https://github.com/SiloHaus">Github</Link>
+        <Link href="https://silo.gg/">Website</Link>
+        <Link href="https://twitter.com/SiloSquad">Twitter</Link>
       </LinkBox>
     </SingleColumnLayout>
   );
