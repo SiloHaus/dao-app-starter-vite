@@ -1,8 +1,10 @@
+import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 
-import { H2, Link, ParMd, SingleColumnLayout } from "@daohaus/ui";
+import { H2, Link, ParMd, SingleColumnLayout, LinkStyles } from "@daohaus/ui";
+
 import { HausAnimated } from "../components/HausAnimated";
-import { StyledRouterLink } from "../components/Layout";
+import { TARGET_DAO } from "../targetDao";
 
 const LinkBox = styled.div`
   display: flex;
@@ -10,18 +12,32 @@ const LinkBox = styled.div`
   justify-content: space-between;
 `;
 
+export const StyledRouterLink = styled(RouterLink)`
+  ${LinkStyles}
+`;
+
 export const Home = () => {
+  const hasTargetDao =
+    TARGET_DAO[import.meta.env.VITE_TARGET_KEY]?.CHAIN_ID !== undefined;
+
   return (
     <SingleColumnLayout>
-      <H2 style={{ marginBottom: "1.5rem" }}>We are Silo Squad</H2>
-      <img src="https://cdn.discordapp.com/attachments/495385622354067468/1162518934407348244/Silo_Logo_02_Ring.png?ex=653c3b20&is=6529c620&hm=71bb8fc3b1e35dff0f476d3c35e7fbc34538ad0bac22cf4ede31780a0f32a492&" width="250" height="250"/>
-      <ParMd style={{ margin: "2.4rem" }}>
-        We're building NFT DAO tooling so you can squad up with your community and get shit done.
+      <H2>DAOhaus is your haus</H2>
+      <HausAnimated />
+      <ParMd style={{ marginBottom: "2.4rem" }}>
+        Get started by editing src/pages/Home.tsx
       </ParMd>
       <LinkBox>
-        <Link href="https://github.com/SiloHaus">Github</Link>
-        <Link href="https://silo.gg/">Website</Link>
-        <Link href="https://twitter.com/SiloSquad">Twitter</Link>
+        {hasTargetDao && (
+          <StyledRouterLink
+            to={`molochv3/${
+              TARGET_DAO[import.meta.env.VITE_TARGET_KEY].CHAIN_ID
+            }/${TARGET_DAO[import.meta.env.VITE_TARGET_KEY].ADDRESS}`}
+          >
+            Target DAO Detected - Visit to DAO Overview
+          </StyledRouterLink>
+        )}
+        <Link href="https://github.com/HausDAO/monorepo">Github</Link>
       </LinkBox>
     </SingleColumnLayout>
   );
